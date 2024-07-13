@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px;
+}
+.navList {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+}
+.navList a {
+  text-decoration: none;
+  color: #282828;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+}
