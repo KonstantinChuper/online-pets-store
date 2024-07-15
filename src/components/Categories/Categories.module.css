@@ -1,0 +1,28 @@
+.categoriesSection {
+  padding-top: 80px;
+}
+.categoryImage {
+  height: 350px;
+  border-radius: 8px;
+  width: 100%;
+}
+.linksBox {
+  padding-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.linksBox a {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #282828;
+}
+.linksBox a:hover {
+  text-decoration: underline;
+}

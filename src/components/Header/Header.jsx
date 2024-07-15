@@ -1,33 +1,34 @@
-import React from 'react'
-import logo from '../../assets/logo.svg'
+import React from "react";
+import logo from "../../assets/logo.svg";
 import cartIcon from "../../assets/cartIcon.svg";
 import styles from "./Header.module.css";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
     <header className={styles.header}>
-      <a href="#">
+      <Link to={"/"}>
         <img src={logo} alt="logo" />
-      </a>
+      </Link>
       <nav>
         <ul className={styles.navList}>
           <li>
-            <a href="#">Main Page</a>
+            <Link to={"/"}>Main Page</Link>
           </li>
           <li>
-            <a href="#">Categories</a>
+            <Link to={"/categories"}>Categories</Link>
           </li>
           <li>
-            <a href="#">All products</a>
+            <Link to={"/products"}>All products</Link>
           </li>
           <li>
-            <a href="#">All sales</a>
+            <Link to={"/sales"}>All sales</Link>
           </li>
         </ul>
       </nav>
-      <a href="">
+      <Link to={"/cart"}>
         <img src={cartIcon} alt="" />
-      </a>
+      </Link>
     </header>
   );
 }

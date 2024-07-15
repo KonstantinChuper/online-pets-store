@@ -6,4 +6,10 @@
 body {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
+  color: #282828;
+}
+.sectionHeader {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.1;
 }
