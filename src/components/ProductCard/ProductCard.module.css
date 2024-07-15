@@ -5,13 +5,7 @@
   border: 1px solid #dddddd;
   object-fit: cover;
 }
-.linksBox {
-  padding-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-}
-.link {
+.card {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +22,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  display: block;
 }
 .priceBox {
   padding: 20px 32px;
