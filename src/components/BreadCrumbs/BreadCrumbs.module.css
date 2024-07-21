@@ -1,0 +1,14 @@
+.divider {
+  height: 1px;
+  width: 16px;
+  background-color: #DDDDDD;
+}
+.breadCrumbs {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+}
+.breadCrumpsLine {
+  display: flex;
+  align-items: center;
+}

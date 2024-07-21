@@ -1,17 +1,15 @@
 import React from 'react'
 import style from './HeaderWithLinks.module.css';
-import { Link } from 'react-router-dom';
+import NavigationItem from "../NavigationItem/NavigationItem";
 
-export default function HeaderWithLinks({header, linkText}) {
+export default function HeaderWithLinks({ header, path, children }) {
   return (
     <div>
       <div className={style.categoryBox}>
         <h2 className="sectionHeader">{header}</h2>
         <div className={style.dividerBox}>
           <div className={style.divider}></div>
-          <Link to={`/${linkText}`} className={style.categoryName}>
-            All {linkText}
-          </Link>
+          <NavigationItem path={path}>{children}</NavigationItem>
         </div>
       </div>
     </div>

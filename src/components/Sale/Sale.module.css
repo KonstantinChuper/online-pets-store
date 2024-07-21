@@ -7,12 +7,7 @@
   width: 100%;
   border: 1px solid #dddddd;
 }
-.linksBox {
-  padding-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-}
+
 .linksBox a {
   display: flex;
   flex-direction: column;

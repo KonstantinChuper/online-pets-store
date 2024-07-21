@@ -1,0 +1,30 @@
+.sortLine {
+  padding-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.sortOptions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.sortOptions span {
+  font-size: 20px;
+  font-weight: 600;
+}
+.priceInput {
+  padding: 8px 16px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  max-width: 112px;
+}
+.priceInput:focus {
+  outline: none;
+  border: 1px solid black;
+}
+.priceInput::placeholder {
+  color: #8b8b8b;
+}
