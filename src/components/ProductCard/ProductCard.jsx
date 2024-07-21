@@ -30,7 +30,7 @@ export default function ProductCard() {
               <Link to={`/products/${product.title}`} key={product.id} className={style.card}>
                 <img className={style.categoryImage} src={`http://localhost:3333${product.image}`} alt={product.title} />
                 {product.discont_price && <div className={style.discount}>{countDiscount(product.price, product.discont_price)}%</div>}
-                <Button type="hidden">Add to cart</Button>
+                <button className={style.productBtn}>Add to cart</button>
                 <div className={style.priceBox}>
                   <span className={style.productName}>{product.title}</span>
                   <div className={style.priceLine}>
@@ -43,20 +43,18 @@ export default function ProductCard() {
           })
         : products.map((product) => {
             return (
-                <Link to={`/products/${product.title}`} key={product.id} className={style.card}>
-                  <img className={style.categoryImage} src={`http://localhost:3333${product.image}`} alt={product.title} />
-                  {product.discont_price && (
-                    <div className={style.discount}>{countDiscount(product.price, product.discont_price)}%</div>
-                  )}
-                  <Button type="card">Add to cart</Button>
-                  <div className={style.priceBox}>
-                    <span className={style.productName}>{product.title}</span>
-                    <div className={style.priceLine}>
-                      <span className={style.price}>{product.discont_price ? `$${product.discont_price}` : `$${product.price}`}</span>
-                      {product.discont_price && <span className={style.oldPrice}>${product.price}</span>}
-                    </div>
+              <Link to={`/products/${product.title}`} key={product.id} className={style.card}>
+                <img className={style.categoryImage} src={`http://localhost:3333${product.image}`} alt={product.title} />
+                {product.discont_price && <div className={style.discount}>{countDiscount(product.price, product.discont_price)}%</div>}
+                <button className={style.productBtn}>Add to cart</button>
+                <div className={style.priceBox}>
+                  <span className={style.productName}>{product.title}</span>
+                  <div className={style.priceLine}>
+                    <span className={style.price}>{product.discont_price ? `$${product.discont_price}` : `$${product.price}`}</span>
+                    {product.discont_price && <span className={style.oldPrice}>${product.price}</span>}
                   </div>
-                </Link>
+                </div>
+              </Link>
             );
           })}
     </div>
