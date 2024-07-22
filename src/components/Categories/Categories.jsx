@@ -31,7 +31,11 @@ export default function Categories() {
         {isHome
           ? categories.slice(0, 4).map((category) => {
               return (
-                <Link to={`/categories/${category.title}`} key={category.id} state={{ categoryId: category.id }}>
+                <Link
+                  to={`/categories/${category.title}`}
+                  key={category.id}
+                  state={{ categoryId: category.id, categoryTitle: category.title }}
+                >
                   <img className={style.categoryImage} src={`http://localhost:3333${category.image}`} alt={category.title} />
                   <span>{category.title}</span>
                 </Link>
@@ -39,7 +43,11 @@ export default function Categories() {
             })
           : categories.map((category) => {
               return (
-                <Link to={`/categories/${category.title}`} key={category.id} state={{ categoryId: category.id }}>
+                <Link
+                  to={`/categories/${category.title}`}
+                  key={category.id}
+                  state={{ categoryId: category.id, categoryTitle: category.title }}
+                >
                   <img className={style.categoryImage} src={`http://localhost:3333${category.image}`} alt={category.title} />
                   <span>{category.title}</span>
                 </Link>

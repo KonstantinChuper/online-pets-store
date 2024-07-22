@@ -9,6 +9,7 @@ export default function ProductCard() {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const categoryId = location.state?.categoryId;
+  const categoryTitle = location.state?.categoryTitle;
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -22,28 +23,34 @@ export default function ProductCard() {
       });
   }, []);
 
+  const filteredProducts = categoryId ? products.filter((product) => product.categoryId === categoryId) : products;
+
   return (
     <div className={style.productBox}>
       {isHome
-        ? products.slice(0, 8).map((product) => {
-            return (product.discont_price &&
-              <Link to={`/products/${product.title}`} key={product.id} className={style.card}>
-                <img className={style.categoryImage} src={`http://localhost:3333${product.image}`} alt={product.title} />
-                {product.discont_price && <div className={style.discount}>{countDiscount(product.price, product.discont_price)}%</div>}
-                <button className={style.productBtn}>Add to cart</button>
-                <div className={style.priceBox}>
-                  <span className={style.productName}>{product.title}</span>
-                  <div className={style.priceLine}>
-                    <span className={style.price}>{product.discont_price ? `$${product.discont_price}` : `$${product.price}`}</span>
-                    {product.discont_price && <span className={style.oldPrice}>${product.price}</span>}
+        ? filteredProducts.slice(0, 8).map((product) => {
+            return (
+              product.discont_price && (
+                <Link to={`/categories/${categoryTitle}/${product.title}`} key={product.id} className={style.card}>
+                  <img className={style.categoryImage} src={`http://localhost:3333${product.image}`} alt={product.title} />
+                  {product.discont_price && (
+                    <div className={style.discount}>{countDiscount(product.price, product.discont_price)}%</div>
+                  )}
+                  <button className={style.productBtn}>Add to cart</button>
+                  <div className={style.priceBox}>
+                    <span className={style.productName}>{product.title}</span>
+                    <div className={style.priceLine}>
+                      <span className={style.price}>{product.discont_price ? `$${product.discont_price}` : `$${product.price}`}</span>
+                      {product.discont_price && <span className={style.oldPrice}>${product.price}</span>}
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              )
             );
           })
-        : products.map((product) => {
+        : filteredProducts.map((product) => {
             return (
-              <Link to={`/products/${product.title}`} key={product.id} className={style.card}>
+              <Link to={`/categories/${categoryTitle}/${product.title}`} key={product.id} className={style.card}>
                 <img className={style.categoryImage} src={`http://localhost:3333${product.image}`} alt={product.title} />
                 {product.discont_price && <div className={style.discount}>{countDiscount(product.price, product.discont_price)}%</div>}
                 <button className={style.productBtn}>Add to cart</button>
