@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Sale.module.css';
 import HeaderWithLinks from '../HeaderWithLinks/HeaderWithLinks';
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCards from '../ProductCards/ProductCards';
 
 export default function Sale() {
   return (
@@ -10,7 +10,7 @@ export default function Sale() {
         Sales
       </HeaderWithLinks>
       <div className={style.linksBox}>
-        <ProductCard />
+        <ProductCards />
       </div>
     </section>
   );

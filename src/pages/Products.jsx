@@ -3,7 +3,7 @@ import BreadCrumbs from '../components/BreadCrumbs/BreadCrumbs';
 import SortLine from '../components/SortLine/SortLine';
 import Container from "@mui/material/Container";
 import HeaderWitoutLink from '../components/HeaderWitoutLink/HeaderWitoutLink';
-import ProductCard from '../components/ProductCard/ProductCard';
+import ProductCards from '../components/ProductCards/ProductCards';
 
 export default function Products() {
   return (
@@ -12,7 +12,7 @@ export default function Products() {
       <Container maxWidth="xl">
         <HeaderWitoutLink paddingTop="40px">All products</HeaderWitoutLink>
         <SortLine />
-        <ProductCard />
+        <ProductCards />
       </Container>
     </div>
   );
