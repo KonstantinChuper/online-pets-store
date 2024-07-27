@@ -4,6 +4,7 @@ import HeaderWithoutLink from "../components/HeaderWitoutLink/HeaderWitoutLink";
 import Container from "@mui/material/Container";
 import SortLine from "../components/SortLine/SortLine";
 import ProductCards from "../components/ProductCards/ProductCards";
+import ProductCardsByCategories from "../components/ProductCardsByCategories/ProductCardsByCategories";
 
 export default function Categorie() {
 
@@ -13,7 +14,7 @@ export default function Categorie() {
       <Container maxWidth="xl">
         <HeaderWithoutLink paddingTop="40px">Dry & Wet Food</HeaderWithoutLink>
         <SortLine />
-        <ProductCards />
+        <ProductCardsByCategories />
       </Container>
     </div>
   );

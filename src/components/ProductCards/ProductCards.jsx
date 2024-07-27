@@ -6,7 +6,6 @@ import { API_URL } from "../../features/api/apiThunks";
 import ProductItem from "../ProductItem/ProductItem";
 import schuffleProducts from "../../helpers/schuffleProducts";
 
-
 export default function ProductCards() {
   const location = useLocation();
   const categoryTitle = location.state?.categoryTitle;
