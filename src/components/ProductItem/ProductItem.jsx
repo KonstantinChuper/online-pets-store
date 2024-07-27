@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import countDiscount from "../../helpers/countDiscount";
-import style from './ProductItem.module.css'
+import style from "./ProductItem.module.css";
 
-export default function ProductItem ({ product, categoryTitle }) {
+export default function ProductItem({ product, categoryTitle }) {
   return (
     <Link to={`/categories/${categoryTitle}/${product.title}`} key={product.id} className={style.card}>
       <img className={style.categoryImage} src={`http://localhost:3333${product.image}`} alt={product.title} />
@@ -18,5 +18,4 @@ export default function ProductItem ({ product, categoryTitle }) {
       </div>
     </Link>
   );
-};
-
+}
