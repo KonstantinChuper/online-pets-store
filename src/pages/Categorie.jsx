@@ -3,7 +3,6 @@ import BreadCrumbs from "../components/BreadCrumbs/BreadCrumbs";
 import HeaderWithoutLink from "../components/HeaderWitoutLink/HeaderWitoutLink";
 import Container from "@mui/material/Container";
 import SortLine from "../components/SortLine/SortLine";
-import ProductCards from "../components/ProductCards/ProductCards";
 import ProductCardsByCategories from "../components/ProductCardsByCategories/ProductCardsByCategories";
 
 export default function Categorie() {

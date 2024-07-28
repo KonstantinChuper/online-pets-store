@@ -2,7 +2,7 @@ import React from "react";
 import style from "./NotFoundPage.module.css";
 import img404 from "../assets/img404.png";
 import digit from "../assets/4digit.svg";
-import { Link } from "react-router-dom";
+import LinkButton from "../components/Buttons/LinkButton/LinkButton";
 
 export default function NotFoundPage() {
   return (
@@ -18,9 +18,9 @@ export default function NotFoundPage() {
           We’re sorry, the page you requested could not be found. <br /> Please go back to the homepage.
         </p>
       </div>
-      <Link className={style.linkBtn} to={"/"}>
+      <LinkButton to={"/"}>
         Go Home
-      </Link>
+      </LinkButton>
     </section>
   );
 }

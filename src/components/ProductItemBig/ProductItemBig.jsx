@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./ProductItemBig.module.css";
 import countDiscount from "../../helpers/countDiscount";
-import ProductCountButtons from "../Buttons/ProductCountButtons";
-import Button from "../Buttons/Button";
+import ProductCountButtons from "../Buttons/ProductCountButtons/ProductCountButtons";
+import Button from "../Buttons/Button/Button";
 
 export default function ProductItemBig({ product }) {
   return (
@@ -17,7 +17,7 @@ export default function ProductItemBig({ product }) {
         </div>
         <div className={style.btnBox}>
           <ProductCountButtons />
-          <Button style={{ width: "65%" }}>Add to cart</Button>
+          <Button style={{ width: "60%" }}>Add to cart</Button>
         </div>
         <div className={style.descriptionBox}>
           <p className={style.descriptionTitle}>Description</p>

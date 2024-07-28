@@ -44,20 +44,19 @@ import { useSelector } from "react-redux";
 export default function ProductCardsByCategories() {
   const location = useLocation();
   const categoryTitle = location.state?.categoryTitle;
-  const categoryId = location.state?.categoryId;
+//   const categoryId = location.state?.categoryId;
   const [products, setProducts] = useState([]);
 
-  //   const { items: categories } = useSelector((state) => state.categories);
-  //   const category = categories.find((category) => category.title === categoryTitle);
-  //   const categoryId = category.id;
-  //   console.log(categoryId);
+    const { items: categories } = useSelector((state) => state.categories);
+    const category = categories.find((category) => category.title === categoryTitle);
+    const categoryId = category.id;
+    console.log(categoryId);
 
   useEffect(() => {
     axios
       .get(`${API_URL}/categories/${categoryId}`)
       .then((responce) => {
         setProducts(responce.data.data);
-        console.log(responce.data);
       })
       .catch((error) => {
         console.error(error);
