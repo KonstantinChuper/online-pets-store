@@ -17,10 +17,10 @@
   background-color: #0D50FF;
   color: #ffffff;
 }
-.secondary {
+/* .secondary {
   background-color: #6c757d;
   color: #ffffff;
-}
+} */
 .common {
   padding: 16px 56px;
 }
@@ -31,4 +31,7 @@
 }
 .hidden {
   display: none;
+}
+.link {
+  padding: 0;
 }

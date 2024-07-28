@@ -10,6 +10,7 @@ import Sales from "./pages/Sales";
 import Cart from "./pages/Cart";
 import Categorie from "./pages/Categorie";
 import ProductPage from "./pages/ProductPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Container maxWidth="xl">
           <Footer />
