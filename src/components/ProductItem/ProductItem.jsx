@@ -5,9 +5,14 @@ import style from "./ProductItem.module.css";
 
 export default function ProductItem({ product, categoryTitle }) {
   return (
-    <Link to={`/categories/${categoryTitle}/${product.title}`} key={product.id} className={style.card}>
+    <Link
+      to={`/categories/${categoryTitle}/${product.title}`}
+      key={product.id}
+      className={style.card}
+      state={{ productId: product.id, productTitle: product.title }}
+    >
       <img className={style.categoryImage} src={`http://localhost:3333${product.image}`} alt={product.title} />
-      {product.discont_price && <div className={style.discount}>{countDiscount(product.price, product.discont_price)}%</div>}
+      {product.discont_price && <div className={style.discount}>-{countDiscount(product.price, product.discont_price)}%</div>}
       <button className={style.productBtn}>Add to cart</button>
       <div className={style.priceBox}>
         <span className={style.productName}>{product.title}</span>

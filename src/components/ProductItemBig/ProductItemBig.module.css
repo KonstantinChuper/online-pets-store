@@ -1,0 +1,85 @@
+.categoryImage {
+  max-width: 780px;
+  height: 572px;
+  padding: 0 96px;
+  object-fit: contain;
+}
+.productBox {
+  display: flex;
+  gap: 32px;
+}
+.productCardBox {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-height: 572px;
+}
+.productName {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+}
+.priceLine {
+  display: flex;
+  gap: 32px;
+  align-items: end;
+  position: relative;
+}
+.price {
+  font-size: 64px;
+  font-weight: 700;
+}
+.oldPrice {
+  color: #8b8b8b;
+  font-size: 40px;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+.discount {
+  padding: 4px 8px;
+  background-color: #0d50ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0.03em;
+  position: absolute;
+  top: 0;
+  right: 376px;
+}
+.btnBox {
+  display: flex;
+  gap: 32px;
+  height: 58px;
+}
+.descriptionBox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.descriptionTitle {
+  font-size: 20px;
+  font-weight: 600;
+}
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.descriptionBtn {
+  align-self: flex-start;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 500;
+}

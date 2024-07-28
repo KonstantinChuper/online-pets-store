@@ -49,14 +49,17 @@
   text-decoration: line-through;
 }
 .discount {
-  width: 68px;
-  height: 34px;
+  padding: 4px 8px;
   background-color: #0d50ff;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
   border-radius: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  letter-spacing: 0.03em;
   position: absolute;
   right: 16px;
   top: 16px;
