@@ -74,6 +74,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.expanded {
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+}
 .descriptionBtn {
   align-self: flex-start;
   background-color: transparent;

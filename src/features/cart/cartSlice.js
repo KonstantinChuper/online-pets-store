@@ -6,7 +6,8 @@ const cartSlice = createSlice({
     items: [],
   },
   reducers: {
-    addToCart: (state, { id, title, image, price, discont_price }) => {
+    addToCart: (state, action) => {
+      const { id, title, image, price, discont_price } = action.payload;       
       const existingItem = state.items.find((item) => item.id === id);
       if (existingItem) {
         existingItem.quantity++;
@@ -21,18 +22,7 @@ const cartSlice = createSlice({
         });
       }
     },
-  },
-  // extraReducers: builder => builder
-  //     .addCase(actionName.pending, (state, { payload }) => {
-  //         state.loading = true
-  //     })
-  //     .addCase(actionName.fulfilled, (state, { payload }) => {
-  //         state.loading = false
-  //     })
-  //     .addCase(actionName.rejected, (state, { payload }) => {
-  //         state.loading = false
-  //         state.error = payload
-  //     })
+  }
 });
 
 export const { addToCart } = cartSlice.actions;

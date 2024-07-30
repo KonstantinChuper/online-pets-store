@@ -13,7 +13,6 @@ export default function BreadCrumbs() {
   return (
     <Container maxWidth="xl">
       <div className={style.breadCrumbs}>
-        
         <NavigationItem path="">Main page</NavigationItem>
 
         {pathnames.map((path, index) => {

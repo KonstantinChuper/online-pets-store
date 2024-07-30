@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import BreadCrumbs from "../components/BreadCrumbs/BreadCrumbs";
-import ProductItem from "../components/ProductItem/ProductItem";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Container from "@mui/material/Container";
@@ -11,7 +10,6 @@ export default function ProductPage() {
   const location = useLocation();
   const productId = location.state?.productId;
   const [products, setProducts] = useState([]);
-  console.log(productId);
 
   useEffect(() => {
     axios

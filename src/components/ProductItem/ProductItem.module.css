@@ -88,3 +88,15 @@
   background-color: #282828;
   color: #ffffff;
 }
+.addedToCartBtn {
+  color: #282828;
+  background-color: #ffffff;
+  border: 1px solid #282828;
+  display: block;
+  cursor: default;
+}
+.addedToCartBtn:hover {
+  color: #282828;
+  background-color: #ffffff;
+  border: 1px solid #282828;
+}

@@ -30,14 +30,20 @@ export default function ProductCards() {
         return schuffleProducts(discountedProducts)
           .slice(0, 4)
           .map((product) =>
-            product.discont_price ? <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} /> : null
+            product.discont_price ? (
+              <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} />
+            ) : null
           );
       case "/sales":
         return products.map((product) =>
-          product.discont_price ? <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} /> : null
+          product.discont_price ? (
+            <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} />
+          ) : null
         );
       default:
-        return products.map((product) => <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} />);
+        return products.map((product) => (
+          <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} />
+        ));
     }
   };
 
