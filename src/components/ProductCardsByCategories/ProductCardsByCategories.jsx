@@ -35,22 +35,20 @@
 
 import React, { useState, useEffect } from "react";
 import style from "./ProductCardsByCategories.module.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../../features/api/apiThunks";
 import ProductItem from "../ProductItem/ProductItem";
 import { useSelector } from "react-redux";
 
 export default function ProductCardsByCategories() {
-  const location = useLocation();
-  const categoryTitle = location.state?.categoryTitle;
-//    const categoryId = location.state?.categoryId;
+  const { categoryTitle } = useParams();
   const [products, setProducts] = useState([]);
 
-    const { items: categories } = useSelector((state) => state.categories);
-    const category = categories.find((category) => category.title === categoryTitle);
-    const categoryId = category.id;
-    console.log(products);
+  const { items: categories } = useSelector((state) => state.categories);
+  const category = categories.find((category) => category.title === categoryTitle);
+  const categoryId = category.id;
+
   useEffect(() => {
     axios
       .get(`${API_URL}/categories/${categoryId}`)
