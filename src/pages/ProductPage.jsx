@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import Container from "@mui/material/Container";
 import style from "./ProductPage.module.css";
 import ProductItemBig from "../components/ProductItemBig/ProductItemBig";
+import { API_URL } from "../features/api/apiThunks";
 
 export default function ProductPage() {
   const location = useLocation();
@@ -13,7 +14,7 @@ export default function ProductPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3333/products/${productId}`)
+      .get(`${API_URL}/products/${productId}`)
       .then((responce) => {
         setProducts(responce.data);
       })
@@ -29,7 +30,7 @@ export default function ProductPage() {
         return (
           <section className={style.productCard}>
             <Container maxWidth={"xl"}>
-              <ProductItemBig key={product.id} product={product}/>
+              <ProductItemBig key={product.id} product={product} />
             </Container>
           </section>
         );

@@ -33,12 +33,12 @@
 //     )
 // }
 
-import React, { useState, useEffect } from "react";
-import style from "./ProductCardsByCategories.module.css";
-import { useLocation, useParams } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { API_URL } from "../../features/api/apiThunks";
 import ProductItem from "../ProductItem/ProductItem";
+import axios from "axios";
+import style from "./ProductCardsByCategories.module.css";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function ProductCardsByCategories() {

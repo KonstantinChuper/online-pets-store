@@ -4,6 +4,7 @@ import { MenuItem, Select, Checkbox } from "@mui/material";
 import { styled } from "@mui/system";
 import { ExpandMore } from "@mui/icons-material";
 import { CheckedIcon, UncheckedIcon } from "./CheckboxIcons";
+import { useLocation } from "react-router-dom";
 
 const CustomSelect = styled(Select)(() => ({
   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
@@ -36,6 +37,9 @@ const CustomMenuItem = styled(MenuItem)(() => ({
 }));
 
 export default function SortLine() {
+  const location = useLocation();
+  const isSales = location.pathname === "/sales"
+  
   return (
     <div className={style.sortLine}>
       <div className={style.sortOptions}>
@@ -43,7 +47,7 @@ export default function SortLine() {
         <input type="number" placeholder="from" min="0" className={style.priceInput} />
         <input type="number" placeholder="to" min="0" className={style.priceInput} />
       </div>
-      <div className={style.sortOptions}>
+      {!isSales && (<div className={style.sortOptions}>
         <span>Discounted items</span>
         <Checkbox
           icon={<UncheckedIcon />}
@@ -60,7 +64,7 @@ export default function SortLine() {
             },
           }}
         />
-      </div>
+      </div>)}
       <div className={style.sortOptions}>
         <span>Sorted</span>
         <CustomSelect defaultValue={"byDefault"} IconComponent={ExpandMore} sx={{ width: "200px" }}>

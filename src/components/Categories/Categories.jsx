@@ -65,6 +65,7 @@ import { getAllCategories } from "../../features/api/apiThunks";
 import style from "./Categories.module.css";
 import HeaderWithLinks from "../HeaderWithLinks/HeaderWithLinks";
 import { Link, useLocation } from "react-router-dom";
+import { API_URL } from "../../features/api/apiThunks";
 
 export default function Categories() {
   const dispatch = useDispatch();
@@ -102,7 +103,7 @@ export default function Categories() {
                 key={category.id}
                 state={{ categoryId: category.id, categoryTitle: category.title }}
               >
-                <img className={style.categoryImage} src={`http://localhost:3333${category.image}`} alt={category.title} />
+                <img className={style.categoryImage} src={`${API_URL}${category.image}`} alt={category.title} />
                 <span>{category.title}</span>
               </Link>
             ))
@@ -112,7 +113,7 @@ export default function Categories() {
                 key={category.id}
                 state={{ categoryId: category.id, categoryTitle: category.title }}
               >
-                <img className={style.categoryImage} src={`http://localhost:3333${category.image}`} alt={category.title} />
+                <img className={style.categoryImage} src={`${API_URL}${category.image}`} alt={category.title} />
                 <span>{category.title}</span>
               </Link>
             ))}

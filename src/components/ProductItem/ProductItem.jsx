@@ -1,10 +1,11 @@
-import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { API_URL } from "../../features/api/apiThunks";
 import { Link } from "react-router-dom";
+import React from "react";
+import { addToCart } from "../../features/cart/cartSlice";
 import countDiscount from "../../helpers/countDiscount";
 import style from "./ProductItem.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../features/cart/cartSlice";
-import { API_URL } from "../../features/api/apiThunks";
 
 export default function ProductItem({ product, categoryTitle }) {
   const dispatch = useDispatch();
@@ -15,15 +16,17 @@ export default function ProductItem({ product, categoryTitle }) {
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!isInCart) {dispatch(
-      addToCart({
-        id: product.id,
-        title: product.title,
-        image: product.image,
-        price: product.price,
-        discont_price: product.discont_price,
-      })
-    )}
+    if (!isInCart) {
+      dispatch(
+        addToCart({
+          id: product.id,
+          title: product.title,
+          image: product.image,
+          price: product.price,
+          discont_price: product.discont_price,
+        })
+      );
+    }
   };
 
   return (

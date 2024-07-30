@@ -7,7 +7,7 @@ export default function Sale() {
   return (
     <section className={style.saleSection}>
       <HeaderWithLinks header={"Sale"} path={"sales"}>
-        Sales
+        All sales
       </HeaderWithLinks>
       <div className={style.linksBox}>
         <ProductCards />

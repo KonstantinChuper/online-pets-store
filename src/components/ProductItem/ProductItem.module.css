@@ -92,7 +92,7 @@
   color: #282828;
   background-color: #ffffff;
   border: 1px solid #282828;
-  display: block;
+  /* display: block; */
   cursor: default;
 }
 .addedToCartBtn:hover {
