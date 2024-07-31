@@ -4,10 +4,9 @@ import style from "./BreadCrumbs.module.css";
 import NavigationItem from "../NavigationItem/NavigationItem";
 import { editPath } from "../../helpers/editPath";
 import Container from "@mui/material/Container";
+import { API_URL } from "../../features/api/apiThunks";
 
 export default function BreadCrumbs({ breadcrumbs }) {
-  const location = useLocation();
-
   return (
     <Container maxWidth="xl">
       <div className={style.breadCrumbs}>
@@ -19,8 +18,8 @@ export default function BreadCrumbs({ breadcrumbs }) {
           return (
             <div className={style.breadCrumpsLine} key={item.path}>
               <div className={style.divider}></div>
-              <NavigationItem path={item.path} isActive={isActive}>
-                {editPath(item.text)}
+              <NavigationItem path={item.to} isActive={isActive}>
+                {item.label}
               </NavigationItem>
             </div>
           );
