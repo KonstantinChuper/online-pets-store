@@ -5,3 +5,11 @@
   font-size: 20px;
   font-weight: 500;
 }
+.cartBox {
+  display: flex;
+  gap: 32px;
+}
+/* .productCardsBox {
+  height: 582px;
+  overflow: scroll;
+} */

@@ -49,9 +49,6 @@
   letter-spacing: 0.03em;
   align-self: flex-start;
   margin-left: 16px;
-  /* position: absolute;
-  top: 0;
-  right: 376px; */
 }
 .btnBox {
   display: flex;

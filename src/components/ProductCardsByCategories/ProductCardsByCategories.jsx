@@ -39,26 +39,48 @@ import ProductItem from "../ProductItem/ProductItem";
 import axios from "axios";
 import style from "./ProductCardsByCategories.module.css";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategories } from "../../features/api/apiThunks";
 
 export default function ProductCardsByCategories() {
   const { categoryTitle } = useParams();
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const { items: categories } = useSelector((state) => state.categories);
+  const { items: categories, status } = useSelector((state) => state.categories);
+  const dispatch = useDispatch();
+
   const category = categories.find((category) => category.title === categoryTitle);
-  const categoryId = category.id;
+  const categoryId = category ? category.id : null;
 
   useEffect(() => {
-    axios
-      .get(`${API_URL}/categories/${categoryId}`)
-      .then((responce) => {
-        setProducts(responce.data.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (status === "idle") {
+      dispatch(getAllCategories());
+    }
+  }, [dispatch, status]);
+
+  useEffect(() => {
+    if (categoryId) {
+      setIsLoading(true);
+      axios
+        .get(`${API_URL}/categories/${categoryId}`)
+        .then((response) => {
+          setProducts(response.data.data);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error(error);
+          setIsLoading(false);
+        });
+    }
   }, [categoryId]);
+
+  if (isLoading || status === "loading") {
+    return <div>Loading...</div>;
+  }
+  if (products.length === 0) {
+    return <div>No products found</div>;
+  }
 
   return (
     <div className={style.productBox}>

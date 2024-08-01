@@ -1,0 +1,45 @@
+.form {
+  padding: 32px;
+  background-color: #f1f3f4;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 548px;
+  height: 582px;
+  flex-shrink: 0;
+}
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  padding-bottom: 24px;
+}
+.total {
+  color: #8b8b8b;
+  font-size: 40px;
+  font-weight: 500;
+}
+.priceLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.price {
+  font-size: 64px;
+  font-weight: 700;
+}
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.inputBox input {
+  padding: 16px 32px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid #DDDDDD;
+}
+.inputBox input::placeholder {
+    color: #8b8b8b;
+}

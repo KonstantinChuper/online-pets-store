@@ -13,13 +13,13 @@ export default function ProductItemBig({ product }) {
       <div className={style.productCardBox}>
         <h3 className={style.productName}>{product.title}</h3>
         <div className={style.priceLine}>
-          <span className={style.price}>{product.discont_price ? `$${product.discont_price}` : `$${product.price}`}</span>
-          {product.discont_price && <span className={style.oldPrice}>${product.price}</span>}
+          <p className={style.price}>{product.discont_price ? `$${product.discont_price}` : `$${product.price}`}</p>
+          {product.discont_price && <p className={style.oldPrice}>${product.price}</p>}
           {product.discont_price && <div className={style.discount}>-{countDiscount(product.price, product.discont_price)}%</div>}
         </div>
         <div className={style.btnBox}>
           <ProductCountButtons />
-          <Button style={{ width: "60%" }}>Add to cart</Button>
+          <Button style={{ width: "100%" }}>Add to cart</Button>
         </div>
         <div className={style.descriptionBox}>
           <p className={style.descriptionTitle}>Description</p>

@@ -6,7 +6,8 @@ import Container from "@mui/material/Container";
 import style from "./ProductPage.module.css";
 import ProductItemBig from "../components/ProductItemBig/ProductItemBig";
 import { API_URL } from "../features/api/apiThunks";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategories } from "../features/api/apiThunks";
 
 export default function ProductPage() {
   const location = useLocation();
@@ -14,7 +15,8 @@ export default function ProductPage() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { items: categories } = useSelector((state) => state.categories);
+  const dispatch = useDispatch();
+  const { items: categories, status } = useSelector((state) => state.categories);
 
   useEffect(() => {
     axios
@@ -26,9 +28,12 @@ export default function ProductPage() {
       .catch((error) => {
         console.error(error);
       });
+    if (status === "idle") {
+      dispatch(getAllCategories());
+    }
   }, []);
 
-  if (isLoading) {
+  if (isLoading || status === "loading") {
     return <div>Loading...</div>;
   }
   if (products.length === 0) {
@@ -37,6 +42,8 @@ export default function ProductPage() {
 
   const product = products[0];
   const categoryName = categories.find((item) => item.id === product.categoryId);
+
+  console.log(status);
 
   return (
     <div>

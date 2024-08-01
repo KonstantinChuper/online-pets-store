@@ -1,7 +1,10 @@
 .countBox {
   border: 1px solid #dddddd;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 6px;
+  width: 200px;
 }
 .btn {
   padding: 12px;
@@ -11,12 +14,15 @@
   color: #8b8b8b;
   border-radius: 6px;
   cursor: pointer;
+  width: 58px;
+  flex-shrink: 0;
 }
 .counter {
-  padding: 12px 44px;
+  padding: 12px;
   font-size: 20px;
   font-weight: 600;
   text-align: center;
+  width: 96px;
 }
 .minusBtn {
   border-right: 1px solid #dddddd;
