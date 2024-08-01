@@ -23,6 +23,7 @@ export default function ProductItem({ product, categoryTitle }) {
           image: product.image,
           price: product.price,
           discont_price: product.discont_price,
+          quantity: 1,
         })
       );
     }

@@ -4,9 +4,28 @@ import countDiscount from "../../helpers/countDiscount";
 import ProductCountButtons from "../Buttons/ProductCountButtons/ProductCountButtons";
 import Button from "../Buttons/Button/Button";
 import { API_URL } from "../../features/api/apiThunks";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/cart/cartSlice";
 
 export default function ProductItemBig({ product }) {
   const [expanded, setExpanded] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+
+  function handleClick(e) {
+    e.preventDefault();
+    dispatch(
+      addToCart({
+        id: product.id,
+        title: product.title,
+        image: product.image,
+        price: product.price,
+        discont_price: product.discont_price,
+        quantity,
+      })
+    );
+  }
+
   return (
     <div className={style.productBox}>
       <img className={style.categoryImage} src={`${API_URL}${product.image}`} alt={product.title} />
@@ -18,8 +37,10 @@ export default function ProductItemBig({ product }) {
           {product.discont_price && <div className={style.discount}>-{countDiscount(product.price, product.discont_price)}%</div>}
         </div>
         <div className={style.btnBox}>
-          <ProductCountButtons />
-          <Button style={{ width: "100%" }}>Add to cart</Button>
+          <ProductCountButtons productId={product.id} />
+          <Button style={{ width: "100%" }} onClick={handleClick}>
+            Add to cart
+          </Button>
         </div>
         <div className={style.descriptionBox}>
           <p className={style.descriptionTitle}>Description</p>
