@@ -16,7 +16,7 @@ export default function OrderDetailsForm() {
         </p>
         <div className={style.priceLine}>
           <p className={style.total}>Total</p>
-          <p className={style.price}>${countTotalPrice(items)}</p>
+          <p className={style.price}>${countTotalPrice(items)},00</p>
         </div>
       </div>
       <div className={style.inputBox}>

@@ -4,8 +4,11 @@ import SortLine from "../components/SortLine/SortLine";
 import Container from "@mui/material/Container";
 import HeaderWitoutLink from "../components/GetDiscount/HeaderWitoutLink/HeaderWitoutLink";
 import ProductCards from "../components/ProductCards/ProductCards";
+import { useSearchParams } from "react-router-dom";
 
 export default function Products() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams);
   return (
     <div>
       <BreadCrumbs />
