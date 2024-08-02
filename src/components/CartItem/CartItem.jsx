@@ -3,15 +3,18 @@ import style from "./CartItem.module.css";
 import ProductCountButtons from "../Buttons/ProductCountButtons/ProductCountButtons";
 import { API_URL } from "../../features/api/apiThunks";
 import CloseIcon from "@mui/icons-material/Close";
-import { useDispatch } from "react-redux";
-import {removeFromCart} from "../../features/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "../../features/cart/cartSlice";
 
 export default function CartItem({ product }) {
   const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  const cartItem = cartItems.find((item) => item.id === product.id) 
+  const quantity = cartItem ? cartItem.quantity : 1;
 
-   const handleRemove = () => {
-     dispatch(removeFromCart(product.id));
-   };
+  const handleRemove = () => {
+    dispatch(removeFromCart(product.id));
+  };
 
   return (
     <div className={style.cartItem}>
@@ -22,8 +25,10 @@ export default function CartItem({ product }) {
           <div className={style.cartItemBtnBox}>
             <ProductCountButtons productId={product.id} />
             <div className={style.priceLine}>
-              <p className={style.price}>{product.discont_price ? `$${product.discont_price}` : `$${product.price}`}</p>
-              {product.discont_price && <p className={style.oldPrice}>${product.price}</p>}
+              <p className={style.price}>
+                {product.discont_price ? `$${product.discont_price * quantity}` : `$${product.price * quantity}`}
+              </p>
+              {product.discont_price && <p className={style.oldPrice}>${product.price * quantity}</p>}
             </div>
           </div>
         </div>

@@ -38,15 +38,18 @@ import { API_URL } from "../../features/api/apiThunks";
 import ProductItem from "../ProductItem/ProductItem";
 import axios from "axios";
 import style from "./ProductCardsByCategories.module.css";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../../features/api/apiThunks";
 import SortLine from "../SortLine/SortLine";
+import filterProducts from "../../helpers/filterProducts";
+import sortProducts from "../../helpers/sortProducts";
 
 export default function ProductCardsByCategories() {
   const { categoryTitle } = useParams();
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const { items: categories, status } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
@@ -83,11 +86,14 @@ export default function ProductCardsByCategories() {
     return <div>No products found</div>;
   }
 
+  const filteredProducts = filterProducts(products, searchParams);
+  const sortedProducts = sortProducts(filteredProducts, searchParams);
+
   return (
     <>
-      <SortLine products={products} />
+      <SortLine setSearchParams={setSearchParams} searchParams={searchParams} />
       <div className={style.productBox}>
-        {products.map((product) => {
+        {sortedProducts.map((product) => {
           return <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} />;
         })}
       </div>

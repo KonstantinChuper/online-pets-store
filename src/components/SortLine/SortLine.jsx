@@ -36,10 +36,17 @@ const CustomMenuItem = styled(MenuItem)(() => ({
   },
 }));
 
-export default function SortLine({ handleChange, searchParams }) {
+export default function SortLine({ searchParams, setSearchParams }) {
   const location = useLocation();
   const isSales = location.pathname === "/sales";
   const sortBy = searchParams.get("sortBy") || "byDefault";
+
+  function handleChange(e) {
+    const { name, value, type, checked } = e.target;
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set(name, type === "checkbox" ? checked : value);
+    setSearchParams(newSearchParams);
+  }
 
   return (
     <div className={style.sortLine}>

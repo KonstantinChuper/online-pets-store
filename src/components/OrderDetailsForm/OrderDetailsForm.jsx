@@ -3,6 +3,7 @@ import Button from "../Buttons/Button/Button";
 import style from "./OrderDetailsForm.module.css";
 import { useSelector } from "react-redux";
 import { countTotalQuantity, countTotalPrice } from "../../helpers/countTotal";
+import formatPrice from "../../helpers/formatPrice";
 
 export default function OrderDetailsForm() {
   const { items } = useSelector((state) => state.cart);
@@ -16,7 +17,7 @@ export default function OrderDetailsForm() {
         </p>
         <div className={style.priceLine}>
           <p className={style.total}>Total</p>
-          <p className={style.price}>${countTotalPrice(items)},00</p>
+          <p className={style.price}>{formatPrice(countTotalPrice(items))}</p>
         </div>
       </div>
       <div className={style.inputBox}>
