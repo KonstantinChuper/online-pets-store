@@ -9,7 +9,8 @@ import { addToCart } from "../../features/cart/cartSlice";
 
 export default function ProductItemBig({ product }) {
   const [expanded, setExpanded] = useState(false);
-  const [quantity, setQuantity] = useState(1);
+  const [counter, setCounter] = useState(1);
+  const [isAdded, setIsAdded] = useState(false);
   const dispatch = useDispatch();
 
   function handleClick(e) {
@@ -21,9 +22,22 @@ export default function ProductItemBig({ product }) {
         image: product.image,
         price: product.price,
         discont_price: product.discont_price,
-        quantity,
+        quantity: counter,
       })
     );
+    setIsAdded(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 2000);
+    setCounter(1);
+  }
+
+  function handleIncrease() {
+    setCounter((prev) => prev + 1);
+  }
+
+  function handleDecrease() {
+    setCounter((prev) => (prev > 1 ? prev - 1 : prev));
   }
 
   return (
@@ -37,9 +51,9 @@ export default function ProductItemBig({ product }) {
           {product.discont_price && <div className={style.discount}>-{countDiscount(product.price, product.discont_price)}%</div>}
         </div>
         <div className={style.btnBox}>
-          <ProductCountButtons productId={product.id} />
-          <Button style={{ width: "100%" }} onClick={handleClick}>
-            Add to cart
+          <ProductCountButtons counter={counter} handleIncrease={handleIncrease} handleDecrease={handleDecrease} />
+          <Button style={{ width: "100%" }} onClick={handleClick} btnType={isAdded ? "added" : null} disabled={isAdded}>
+            {isAdded ? "Added" : "Add to cart"}
           </Button>
         </div>
         <div className={style.descriptionBox}>

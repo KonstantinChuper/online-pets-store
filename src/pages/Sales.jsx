@@ -1,6 +1,5 @@
 import React from "react";
 import BreadCrumbs from "../components/BreadCrumbs/BreadCrumbs";
-import SortLine from "../components/SortLine/SortLine";
 import HeaderWitoutLink from "../components/GetDiscount/HeaderWitoutLink/HeaderWitoutLink";
 import Container from "@mui/material/Container";
 import ProductCards from "../components/ProductCards/ProductCards";

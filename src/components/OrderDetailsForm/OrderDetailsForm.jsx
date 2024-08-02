@@ -1,31 +1,112 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Buttons/Button/Button";
 import style from "./OrderDetailsForm.module.css";
 import { useSelector } from "react-redux";
 import { countTotalQuantity, countTotalPrice } from "../../helpers/countTotal";
 import formatPrice from "../../helpers/formatPrice";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { API_URL } from "../../features/api/apiThunks";
 
 export default function OrderDetailsForm() {
   const { items } = useSelector((state) => state.cart);
   const itemsQuantity = countTotalQuantity(items);
+  const [modalVisible, setModalVisible] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  async function onSubmit(data) {
+    try {
+      await axios.post(`${API_URL}/order/send`, data);
+      reset();
+      setModalVisible(true);
+    } catch (error) {
+      console.error("Error submitting form: ", error);
+    }
+  }
+
   return (
-    <form className={style.form}>
-      <div>
-        <p className={style.title}>Order details</p>
-        <p className={style.total}>
-          {itemsQuantity} {itemsQuantity > 1 ? "items" : "item"}
-        </p>
-        <div className={style.priceLine}>
-          <p className={style.total}>Total</p>
-          <p className={style.price}>{formatPrice(countTotalPrice(items))}</p>
+    <>
+      <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <p className={style.title}>Order details</p>
+          <p className={style.total}>
+            {itemsQuantity} {itemsQuantity > 1 ? "items" : "item"}
+          </p>
+          <div className={style.priceLine}>
+            <p className={style.total}>Total</p>
+            <p className={style.price}>{formatPrice(countTotalPrice(items))}</p>
+          </div>
         </div>
-      </div>
-      <div className={style.inputBox}>
-        <input type="text" placeholder="Name" />
-        <input type="number" placeholder="Phone Number" />
-        <input type="email" placeholder="Email" />
-      </div>
-      <Button style={{ width: "100%" }}>Order</Button>
-    </form>
+        <div className={style.inputBox}>
+          <input
+            type="text"
+            placeholder="Name"
+            className={errors.name ? style.errorInput : style.input}
+            {...register("name", {
+              required: "Name is required",
+              minLength: {
+                value: 1,
+                message: "Name must be at least 1 character",
+              },
+              pattern: {
+                value: /^[A-Za-zА-Яа-я\s']+$/,
+                message: "Name can only contain letters and spaces",
+              },
+            })}
+          />
+          {errors.name && <p className={style.error}>{errors.name.message}</p>}
+
+          <input
+            type="text"
+            placeholder="Phone Number"
+            className={errors.phone ? style.errorInput : style.input}
+            {...register("phone", {
+              required: "Phone number is required",
+              minLength: {
+                value: 6,
+                message: "Phone number must be at least 6 characters",
+              },
+              pattern: {
+                value: /^\+?[1-9]\d{5,14}$/,
+                message: "Invalid phone number format",
+              },
+            })}
+          />
+          {errors.phone && <p className={style.error}>{errors.phone.message}</p>}
+
+          <input
+            type="email"
+            placeholder="Email"
+            className={errors.email ? style.errorInput : style.input}
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message: "Invalid email address",
+              },
+            })}
+          />
+          {errors.email && <p className={style.error}>{errors.email.message}</p>}
+        </div>
+        <Button type="submit" style={{ width: "100%" }}>
+          Order
+        </Button>
+      </form>
+
+      {modalVisible && (
+        <div className={style.modal}>
+          <div className={style.modalContent}>
+            <p>Congratulations! Your order has been successfully placed on the website.</p>
+            <p>A manager will contact you shortly to confirm your order.</p>
+            <button onClick={() => setModalVisible(false)}>Close</button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

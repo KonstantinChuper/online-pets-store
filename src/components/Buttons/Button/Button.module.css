@@ -13,10 +13,12 @@
   background-color: #282828;
   color: #ffffff;
 }
+ /* colors */
 .primary {
   background-color: #0D50FF;
   color: #ffffff;
 }
+/* types */
 .common {
   padding: 16px 56px;
 }
@@ -30,4 +32,10 @@
 }
 .link {
   padding: 0;
+}
+.added {
+  color: #282828;
+  background-color: #ffffff;
+  border: 1px solid #282828;
+  pointer-events: none;
 }
