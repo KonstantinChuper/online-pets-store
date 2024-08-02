@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import Button from "../Buttons/Button/Button";
 import style from "./OrderDetailsForm.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { countTotalQuantity, countTotalPrice } from "../../helpers/countTotal";
 import formatPrice from "../../helpers/formatPrice";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { API_URL } from "../../features/api/apiThunks";
 import closeWindowIconWhite from "../../assets/closeWindowIconWhite.svg";
+import { clearCart } from "../../features/cart/cartSlice";
 
 export default function OrderDetailsForm() {
   const { items } = useSelector((state) => state.cart);
   const itemsQuantity = countTotalQuantity(items);
   const [modalVisible, setModalVisible] = useState(false);
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -28,6 +30,11 @@ export default function OrderDetailsForm() {
     } catch (error) {
       console.error("Error submitting form: ", error);
     }
+  }
+
+  function onModalClose() {
+    setModalVisible(false);
+    dispatch(clearCart());
   }
 
   return (
@@ -104,7 +111,7 @@ export default function OrderDetailsForm() {
           <div className={style.modalContent}>
             <div className={style.modalHeaderBox}>
               <h4>Congratulations!</h4>
-              <button onClick={() => setModalVisible(false)}>
+              <button onClick={onModalClose}>
                 <img src={closeWindowIconWhite} alt="closeWindowIconWhite" />
               </button>
             </div>
