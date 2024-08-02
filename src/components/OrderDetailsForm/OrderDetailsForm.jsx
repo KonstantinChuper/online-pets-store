@@ -7,6 +7,7 @@ import formatPrice from "../../helpers/formatPrice";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { API_URL } from "../../features/api/apiThunks";
+import closeWindowIconWhite from "../../assets/closeWindowIconWhite.svg";
 
 export default function OrderDetailsForm() {
   const { items } = useSelector((state) => state.cart);
@@ -72,7 +73,7 @@ export default function OrderDetailsForm() {
                 message: "Phone number must be at least 6 characters",
               },
               pattern: {
-                value: /^\+?[1-9]\d{5,14}$/,
+                value: /^\+?[0-9]\d{5,14}$/,
                 message: "Invalid phone number format",
               },
             })}
@@ -101,9 +102,16 @@ export default function OrderDetailsForm() {
       {modalVisible && (
         <div className={style.modal}>
           <div className={style.modalContent}>
-            <p>Congratulations! Your order has been successfully placed on the website.</p>
-            <p>A manager will contact you shortly to confirm your order.</p>
-            <button onClick={() => setModalVisible(false)}>Close</button>
+            <div className={style.modalHeaderBox}>
+              <h4>Congratulations!</h4>
+              <button onClick={() => setModalVisible(false)}>
+                <img src={closeWindowIconWhite} alt="closeWindowIconWhite" />
+              </button>
+            </div>
+            <div className={style.modalTextBox}>
+              <p>Your order has been successfully placed on the website.</p>
+              <p>A manager will contact you shortly to confirm your order.</p>
+            </div>
           </div>
         </div>
       )}
