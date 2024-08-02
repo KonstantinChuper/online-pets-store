@@ -11,7 +11,6 @@ export default function Sales() {
       <BreadCrumbs />
       <Container maxWidth="xl">
         <HeaderWitoutLink paddingTop="40px">Discounted items</HeaderWitoutLink>
-        <SortLine />
         <ProductCards />
       </Container>
     </div>

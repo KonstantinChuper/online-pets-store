@@ -41,6 +41,7 @@ import style from "./ProductCardsByCategories.module.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../../features/api/apiThunks";
+import SortLine from "../SortLine/SortLine";
 
 export default function ProductCardsByCategories() {
   const { categoryTitle } = useParams();
@@ -83,10 +84,13 @@ export default function ProductCardsByCategories() {
   }
 
   return (
-    <div className={style.productBox}>
-      {products.map((product) => {
-        return <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} />;
-      })}
-    </div>
+    <>
+      <SortLine products={products} />
+      <div className={style.productBox}>
+        {products.map((product) => {
+          return <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} />;
+        })}
+      </div>
+    </>
   );
 }

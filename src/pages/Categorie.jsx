@@ -11,7 +11,6 @@ export default function Categorie() {
       <BreadCrumbs />
       <Container maxWidth="xl">
         <HeaderWithoutLink paddingTop="40px">Dry & Wet Food</HeaderWithoutLink>
-        <SortLine />
         <ProductCardsByCategories />
       </Container>
     </div>

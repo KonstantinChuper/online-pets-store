@@ -36,38 +36,60 @@ const CustomMenuItem = styled(MenuItem)(() => ({
   },
 }));
 
-export default function SortLine() {
+export default function SortLine({ handleChange, searchParams }) {
   const location = useLocation();
-  const isSales = location.pathname === "/sales"
-  
+  const isSales = location.pathname === "/sales";
+  const sortBy = searchParams.get("sortBy") || "byDefault";
+
   return (
     <div className={style.sortLine}>
       <div className={style.sortOptions}>
         <span>Price</span>
-        <input type="number" placeholder="from" min="0" className={style.priceInput} />
-        <input type="number" placeholder="to" min="0" className={style.priceInput} />
-      </div>
-      {!isSales && (<div className={style.sortOptions}>
-        <span>Discounted items</span>
-        <Checkbox
-          icon={<UncheckedIcon />}
-          checkedIcon={<CheckedIcon />}
-          disableRipple={true}
-          sx={{
-            "&.MuiCheckbox-root": {
-              padding: 0,
-            },
-            "& .PrivateSwitchBase-input": {
-              width: 36,
-              height: 36,
-              padding: 0,
-            },
-          }}
+        <input
+          type="number"
+          name="minPrice"
+          placeholder="from"
+          min="0"
+          className={style.priceInput}
+          value={searchParams.get("minPrice") || ""}
+          onChange={handleChange}
         />
-      </div>)}
+        <input
+          type="number"
+          name="maxPrice"
+          placeholder="to"
+          min="0"
+          className={style.priceInput}
+          value={searchParams.get("maxPrice") || ""}
+          onChange={handleChange}
+        />
+      </div>
+      {!isSales && (
+        <div className={style.sortOptions}>
+          <span>Discounted items</span>
+          <Checkbox
+            name="includeDiscount"
+            onChange={handleChange}
+            checked={searchParams.get("includeDiscount") === "true"}
+            icon={<UncheckedIcon />}
+            checkedIcon={<CheckedIcon />}
+            disableRipple={true}
+            sx={{
+              "&.MuiCheckbox-root": {
+                padding: 0,
+              },
+              "& .PrivateSwitchBase-input": {
+                width: 36,
+                height: 36,
+                padding: 0,
+              },
+            }}
+          />
+        </div>
+      )}
       <div className={style.sortOptions}>
         <span>Sorted</span>
-        <CustomSelect defaultValue={"byDefault"} IconComponent={ExpandMore} sx={{ width: "200px" }}>
+        <CustomSelect name="sortBy" value={sortBy} onChange={handleChange} IconComponent={ExpandMore} sx={{ width: "200px" }}>
           <CustomMenuItem value="byDefault">by default</CustomMenuItem>
           <CustomMenuItem value="newest">newest</CustomMenuItem>
           <CustomMenuItem value="priceHighToLow">price: high-low</CustomMenuItem>
