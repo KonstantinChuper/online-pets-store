@@ -2,24 +2,27 @@
   padding-top: 40px;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 2.5rem;
 }
 .sortOptions {
   display: flex;
   align-items: center;
   gap: 16px;
 }
+.discounted {
+  margin-left: 24px;
+}
 .sortOptions span {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 600;
 }
 .priceInput {
   padding: 8px 16px;
   border: 1px solid #dddddd;
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
-  max-width: 112px;
+  max-width: 7rem;
 }
 .priceInput:focus {
   outline: none;
@@ -27,4 +30,13 @@
 }
 .priceInput::placeholder {
   color: #8b8b8b;
+}
+@media (max-width: 834px) {
+  .sortLine {
+    align-items: start;
+    flex-direction: column;
+  }
+  .discounted {
+  margin-left: 0;
+}
 }

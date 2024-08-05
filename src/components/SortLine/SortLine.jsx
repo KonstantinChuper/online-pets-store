@@ -17,7 +17,7 @@ const CustomSelect = styled(Select)(() => ({
     padding: "8px",
     paddingLeft: "16px",
     fontFamily: "Montserrat",
-    fontSize: "16px",
+    fontSize: "1rem",
     fontWeight: "500",
   },
   "& .MuiPaper-root": {
@@ -28,7 +28,7 @@ const CustomSelect = styled(Select)(() => ({
 const CustomMenuItem = styled(MenuItem)(() => ({
   fontFamily: "Montserrat",
   color: "#8B8B8B",
-  fontSize: "16px",
+  fontSize: "1rem",
   fontWeight: "500",
   "&.Mui-selected": {
     backgroundColor: "inherit",
@@ -70,30 +70,30 @@ export default function SortLine({ searchParams, setSearchParams }) {
           value={searchParams.get("maxPrice") || ""}
           onChange={handleChange}
         />
+        {!isSales && (
+          <div className={style.sortOptions}>
+            <span className={style.discounted}>Discounted items</span>
+            <Checkbox
+              name="includeDiscount"
+              onChange={handleChange}
+              checked={searchParams.get("includeDiscount") === "true"}
+              icon={<UncheckedIcon />}
+              checkedIcon={<CheckedIcon />}
+              disableRipple={true}
+              sx={{
+                "&.MuiCheckbox-root": {
+                  padding: 0,
+                },
+                "& .PrivateSwitchBase-input": {
+                  width: 36,
+                  height: 36,
+                  padding: 0,
+                },
+              }}
+            />
+          </div>
+        )}
       </div>
-      {!isSales && (
-        <div className={style.sortOptions}>
-          <span>Discounted items</span>
-          <Checkbox
-            name="includeDiscount"
-            onChange={handleChange}
-            checked={searchParams.get("includeDiscount") === "true"}
-            icon={<UncheckedIcon />}
-            checkedIcon={<CheckedIcon />}
-            disableRipple={true}
-            sx={{
-              "&.MuiCheckbox-root": {
-                padding: 0,
-              },
-              "& .PrivateSwitchBase-input": {
-                width: 36,
-                height: 36,
-                padding: 0,
-              },
-            }}
-          />
-        </div>
-      )}
       <div className={style.sortOptions}>
         <span>Sorted</span>
         <CustomSelect name="sortBy" value={sortBy} onChange={handleChange} IconComponent={ExpandMore} sx={{ width: "200px" }}>

@@ -39,8 +39,6 @@ export default function Footer() {
         title="map"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.2331572603994!2d13.401947677118638!3d52.5111194368866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84fb0e85329a1%3A0xa141f1e83418ee88!2sIT%20Career%20Hub!5e0!3m2!1sen!2sde!4v1720898153425!5m2!1sen!2sde"
         height="350"
-        // loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
     </footer>
   );

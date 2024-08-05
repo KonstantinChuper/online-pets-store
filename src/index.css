@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  font-size: 16px;
+}
 body {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
@@ -12,4 +15,19 @@ body {
   font-size: 4rem;
   font-weight: 700;
   line-height: 1.1;
+}
+@media (max-width: 1054px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (max-width: 786px) {
+  html {
+    font-size: 10px;
+  }
+}
+  @media (max-width: 576px) {
+  html {
+    font-size: 8px;
+  }
 }

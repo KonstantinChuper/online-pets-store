@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <header className={style.header}>
       <Link to={"/"}>
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" className={style.logoImg} />
       </Link>
       <nav>
         <ul className={style.navList}>

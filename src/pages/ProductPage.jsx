@@ -31,7 +31,7 @@ export default function ProductPage() {
     if (status === "idle") {
       dispatch(getAllCategories());
     }
-  }, []);
+  }, [dispatch, productId, status]);
 
   if (isLoading || status === "loading") {
     return <div>Loading...</div>;
@@ -42,8 +42,6 @@ export default function ProductPage() {
 
   const product = products[0];
   const categoryName = categories.find((item) => item.id === product.categoryId);
-
-  console.log(status);
 
   return (
     <div>
@@ -61,7 +59,7 @@ export default function ProductPage() {
         ]}
       />
       {products.map((product) => (
-        <section className={style.productCard}>
+        <section key={product.id} className={style.productCard}>
           <Container maxWidth={"xl"}>
             <ProductItemBig key={product.id} product={product} />
           </Container>

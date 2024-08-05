@@ -6,7 +6,7 @@ const CustomButton = styled(Button)(() => ({
   backgroundColor: "#FFFFFF",
   color: "#282828",
   padding: "10px 20px",
-  fontSize: "20px",
+  fontSize: "1.25rem",
   fontWeight: "600",
   lineHeight: "1.3",
   textTransform: "none",
