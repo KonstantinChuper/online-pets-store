@@ -9,7 +9,7 @@ export default function Sales() {
     <div>
       <BreadCrumbs />
       <Container maxWidth="xl">
-        <HeaderWitoutLink paddingTop="40px">Discounted items</HeaderWitoutLink>
+        <HeaderWitoutLink paddingTop="2.5rem">Discounted items</HeaderWitoutLink>
         <ProductCards />
       </Container>
     </div>

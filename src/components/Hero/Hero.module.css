@@ -3,15 +3,33 @@
   background-size: cover;
   background-position: center;
   height: 600px;
-  padding-top: 80px;
-  margin-bottom: 80px;
+  padding-top: 5rem;
+  margin-bottom: 5rem;
 }
 .header {
   font-size: 6rem;
   font-weight: 700;
   line-height: 1.1;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .button {
   margin-top: 40px;
+}
+@media (max-width: 768px) {
+  .heroSection {
+    height: 450px;
+  }
+}
+@media (max-width: 768px) {
+  .heroSection {
+    height: 350px;
+  }
+}
+@media (max-width: 610px) {
+  .header {
+    font-size: 4rem;
+  }
+   .heroSection {
+    height: 300px;
+  }
 }

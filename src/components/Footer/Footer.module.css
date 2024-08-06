@@ -1,5 +1,5 @@
 footer {
-  padding-top: 80px;
+  padding-top: 5rem;
 }
 .contactBox {
   padding-top: 40px;
@@ -35,13 +35,14 @@ footer {
 .iFrame {
   width: 100%;
   margin-top: 32px;
-  margin-bottom: 80px;
+  margin-bottom: 5rem;
   border-radius: 10px;
   border: none;
 }
 .contactInfoBox a:hover {
   opacity: 0.8;
 }
+
 @media (max-width: 786px) {
   .contactBox {
     padding-top: 30px;
@@ -56,7 +57,10 @@ footer {
     gap: 16px;
   }
   .contactInfoBox {
-  padding: 16px;
-  gap: 8px;
-}
+    padding: 16px;
+    gap: 8px;
+  }
+  .icon {
+    width: 35px;
+  }
 }

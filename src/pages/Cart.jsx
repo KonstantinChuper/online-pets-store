@@ -11,7 +11,7 @@ export default function Cart() {
   const { items: products } = useSelector((state) => state.cart);
 
   return (
-    <section style={{ paddingTop: "40px" }}>
+    <section style={{ paddingTop: "2.5rem" }}>
       {products.length === 0 ? (
         <Container maxWidth="xl">
           <HeaderWithLinks header={"Shopping cart"} path={""}>
@@ -28,8 +28,8 @@ export default function Cart() {
         <Container maxWidth="xl">
           <div className={style.cartBox}>
             <div style={{width: "100%"}} className={style.productCardsBox}>
-              {products.map((product) => {
-                return <CartItem product={product} />;
+              {products.map((product, index) => {
+                return <CartItem key={index} product={product} />;
               })}
             </div>
             <OrderDetailsForm />

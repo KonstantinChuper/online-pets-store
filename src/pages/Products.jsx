@@ -9,7 +9,7 @@ export default function Products() {
     <div>
       <BreadCrumbs />
       <Container maxWidth="xl">
-        <HeaderWitoutLink paddingTop="40px">All products</HeaderWitoutLink>
+        <HeaderWitoutLink paddingTop="2.5rem">All products</HeaderWitoutLink>
         <ProductCards />
       </Container>
     </div>

@@ -7,9 +7,16 @@
 }
 .cartBox {
   display: flex;
-  gap: 32px;
+  gap: 2rem;
 }
 /* .productCardsBox {
   height: 582px;
   overflow: scroll;
 } */
+@media (max-width: 1045px) {
+  .cartBox {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+} 

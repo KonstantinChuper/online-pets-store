@@ -18,10 +18,10 @@ export default function Footer() {
           <span className={style.contactHeader}>Socials</span>
           <span className={style.contactIconsBox}>
             <a target="_blank" rel="noreferrer" href="https://www.instagram.com/">
-              <img src={IconIstagramm} alt="Icon Istagramm" />
+              <img className={style.icon} src={IconIstagramm} alt="Icon Istagramm" />
             </a>
             <a target="_blank" rel="noreferrer" href="https://web.whatsapp.com/">
-              <img src={iconWhatsapp} alt="Icon Whatsapp" />
+              <img className={style.icon} src={iconWhatsapp} alt="Icon Whatsapp" />
             </a>
           </span>
         </div>

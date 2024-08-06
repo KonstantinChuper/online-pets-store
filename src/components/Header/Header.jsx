@@ -30,7 +30,7 @@ export default function Header() {
         </ul>
       </nav>
       <Link to={"/cart"} className={style.cartBox}>
-        <img src={cartIcon} alt="" />
+        <img src={cartIcon} alt="cartIcon" className={style.cartIcon} />
         {totalQuantity > 0 && (<div className={style.cartSchild}>
           <span className={style.cartSchildText}>{totalQuantity}</span>
         </div>)}

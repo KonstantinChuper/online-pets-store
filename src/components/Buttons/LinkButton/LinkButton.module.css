@@ -18,3 +18,8 @@
   background-color: #282828;
   color: #ffffff;
 }
+@media (max-width: 576px) {
+  .linkBtn {
+  padding: 16px 36px;
+  }
+}

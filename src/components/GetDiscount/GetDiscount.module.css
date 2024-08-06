@@ -1,5 +1,5 @@
 .getDiscount {
-  margin-top: 106px;
+  margin-top: 6.625rem;
   padding: 32px;
   background: linear-gradient(245deg, #2451c6 32.63%, #0d50ff 98.96%);
   border-radius: 12px;
@@ -17,7 +17,7 @@
   position: absolute;
   bottom: 0;
   z-index: 0;
-  width: 750px;
+  width: 51vw;
 }
 .image {
   position: absolute;
@@ -63,10 +63,14 @@ input:active {
 .form .errorInput:active {
   box-shadow: none;
 }
-
-@media (max-width: 1254px) {
+@media (min-width: 1454px) {
+  .imageBox {
+    width: 750px;
+  }
+}
+@media (max-width: 1054px) {
   .getDiscount {
-    height: 850px;
+    height: 870px;
   }
   .form {
     max-width: 100%;
@@ -79,11 +83,33 @@ input:active {
     padding-top: 56px;
   }
   .form input {
-  width: 70%;
+    width: 80%;
   }
   .error {
-  align-self: start;
-  padding-left: 16%;
-  color: #ff9292;
+    align-self: start;
+    padding-left: 16%;
+    color: #ff9292;
+  }
+  .imageBox {
+    position: static;
+  }
+  .image {
+    left: 0;
+  }
 }
+@media (max-width: 768px) {
+  .getDiscount {
+    height: 750px;
+  }
+  .form input {
+    width: 100%;
+  }
+  .error {
+    padding-left: 6%;
+  }
+}
+@media (max-width: 567px) {
+  .getDiscount {
+    height: 650px;
+  }
 }

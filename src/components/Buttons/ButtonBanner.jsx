@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/system";
 
-const CustomButton = styled(Button)(() => ({
+const CustomButton = styled(Button)(({theme}) => ({
   backgroundColor: "#FFFFFF",
   color: "#282828",
   padding: "10px 20px",
@@ -20,6 +20,9 @@ const CustomButton = styled(Button)(() => ({
   "&.Mui-disabled": {
     backgroundColor: "#F1F3F4",
     color: "#0D50FF",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
   },
 }));
 

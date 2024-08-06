@@ -4,7 +4,7 @@
   width: 100%;
 }
 .linksBox {
-  padding-top: 40px;
+  padding-top: 2.5rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
@@ -23,3 +23,21 @@
 .linksBox a:hover {
   text-decoration: underline;
 }
+@media (min-width: 2000px) {
+  .categoryImage {
+    height: 450px;
+  }
+}
+@media (max-width: 768px) {
+  .linksBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .categoryImage {
+    height: 40vw;
+  }
+}
+/* @media (max-width: 576px) {
+  .categoryImage {
+    height: 23vw;
+  }
+} */

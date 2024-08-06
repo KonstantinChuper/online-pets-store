@@ -9,7 +9,7 @@ export default function Categories() {
     <div>
       <BreadCrumbs />
       <Container maxWidth="xl">
-        <HeaderWitoutLink paddingTop="40px">Categories</HeaderWitoutLink>
+        <HeaderWitoutLink paddingTop="2.5rem">Categories</HeaderWitoutLink>
         <CategoriesElement />
       </Container>
     </div>

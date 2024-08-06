@@ -1,14 +1,21 @@
 .divider {
   height: 1px;
   width: 16px;
-  background-color: #DDDDDD;
+  background-color: #dddddd;
 }
 .breadCrumbs {
   display: flex;
   align-items: center;
-  padding-top: 40px;
+  flex-wrap: wrap;
+  padding-top: 2.5rem;
 }
 .breadCrumpsLine {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+}
+@media (max-width: 1054px) {
+  .breadCrumpsLine:last-child {
+    padding-top: 5px;
+  }
 }
