@@ -10,9 +10,37 @@ export default function Header() {
   const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0)
   return (
     <header className={style.header}>
-      <Link to={"/"}>
-        <img src={logo} alt="logo" className={style.logoImg} />
-      </Link>
+      <div className={style.burgerBox}>
+        <div className={style.menu}>
+          <input type="checkbox" id="burger-checkbox" className={style.burgerCheckbox} />
+          <label htmlFor="burger-checkbox" className={style.burger}></label>
+          <ul className={style.menuList}>
+            <li>
+              <Link to={"/"} className={style.menuItem}>
+                Main Page
+              </Link>
+            </li>
+            <li>
+              <Link to={"/categories"} className={style.menuItem}>
+                Categories
+              </Link>
+            </li>
+            <li>
+              <Link to={"/products"} className={style.menuItem}>
+                All products
+              </Link>
+            </li>
+            <li>
+              <Link to={"/sales"} className={style.menuItem}>
+                All sales
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <Link to={"/"}>
+          <img src={logo} alt="logo" className={style.logoImg} />
+        </Link>
+      </div>
       <nav>
         <ul className={style.navList}>
           <li>
@@ -31,9 +59,11 @@ export default function Header() {
       </nav>
       <Link to={"/cart"} className={style.cartBox}>
         <img src={cartIcon} alt="cartIcon" className={style.cartIcon} />
-        {totalQuantity > 0 && (<div className={style.cartSchild}>
-          <span className={style.cartSchildText}>{totalQuantity}</span>
-        </div>)}
+        {totalQuantity > 0 && (
+          <div className={style.cartSchild}>
+            <span className={style.cartSchildText}>{totalQuantity}</span>
+          </div>
+        )}
       </Link>
     </header>
   );
