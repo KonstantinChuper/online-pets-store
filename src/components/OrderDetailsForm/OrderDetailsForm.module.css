@@ -64,6 +64,7 @@
   display: flex;
   align-items: start;
   justify-content: center;
+  z-index: 2;
 }
 .modalContent {
   margin-top: 10%;

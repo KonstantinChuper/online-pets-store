@@ -31,7 +31,7 @@ export default function ProductPage() {
     if (status === "idle") {
       dispatch(getAllCategories());
     }
-  }, [dispatch, productId, status]);
+  }, [dispatch, status, productId]);
 
   if (isLoading || status === "loading") {
     return <div>Loading...</div>;
@@ -41,7 +41,7 @@ export default function ProductPage() {
   }
 
   const product = products[0];
-  const categoryName = categories.find((item) => item.id === product.categoryId);
+  const categoryName = categories.find((category) => category.id === product.categoryId);
 
   return (
     <div>

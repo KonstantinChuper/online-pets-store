@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../../assets/logo.svg";
 import cartIcon from "../../assets/cartIcon.svg";
 import style from "./Header.module.css";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategories } from "../../features/api/apiThunks";
 
 export default function Header() {
   const { items } = useSelector((state) => state.cart);
-  const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0)
+  const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+      dispatch(getAllCategories());
+  }, [dispatch]);
+
   return (
     <header className={style.header}>
       <div className={style.burgerBox}>

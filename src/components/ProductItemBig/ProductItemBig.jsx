@@ -65,7 +65,7 @@ export default function ProductItemBig({ product }) {
               setExpanded(!expanded);
             }}
           >
-            Read more
+            {expanded ? "Read less" : "Read more"}
           </button>
         </div>
       </div>

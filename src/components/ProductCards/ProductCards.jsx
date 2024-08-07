@@ -8,14 +8,15 @@ import schuffleProducts from "../../helpers/schuffleProducts";
 import SortLine from "../SortLine/SortLine";
 import filterProducts from "../../helpers/filterProducts";
 import sortProducts from "../../helpers/sortProducts";
+import { useSelector } from "react-redux";
 
 export default function ProductCards() {
   const location = useLocation();
-  const categoryTitle = location.state?.categoryTitle;
   const pathName = location.pathname;
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
+  const { items: categories } = useSelector((state) => state.categories);
 
   useEffect(() => {
     axios
@@ -37,6 +38,11 @@ export default function ProductCards() {
     return <div>No products found</div>;
   }
 
+  const getCategoryName = (categoryId) => {
+    const category = categories.find((cat) => cat.id === categoryId);
+    return category.title;
+  };
+
   const filteredProducts = filterProducts(products, searchParams);
   const sortedProducts = sortProducts(filteredProducts, searchParams);
 
@@ -49,7 +55,9 @@ export default function ProductCards() {
             {schuffleProducts(discountedProducts)
               .slice(0, 4)
               .map((product) =>
-                product.discont_price ? <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} /> : null
+                product.discont_price ? (
+                  <ProductItem key={product.id} product={product} categoryTitle={getCategoryName(product.categoryId)} />
+                ) : null
               )}
           </div>
         );
@@ -59,7 +67,9 @@ export default function ProductCards() {
             <SortLine setSearchParams={setSearchParams} searchParams={searchParams} />
             <div className={style.productBox}>
               {sortedProducts.map((product) =>
-                product.discont_price ? <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} /> : null
+                product.discont_price ? (
+                  <ProductItem key={product.id} product={product} categoryTitle={getCategoryName(product.categoryId)} />
+                ) : null
               )}
             </div>
           </>
@@ -70,7 +80,7 @@ export default function ProductCards() {
             <SortLine setSearchParams={setSearchParams} searchParams={searchParams} />
             <div className={style.productBox}>
               {sortedProducts.map((product) => (
-                <ProductItem key={product.id} product={product} categoryTitle={categoryTitle} />
+                <ProductItem key={product.id} product={product} categoryTitle={getCategoryName(product.categoryId)} />
               ))}
             </div>
           </>
