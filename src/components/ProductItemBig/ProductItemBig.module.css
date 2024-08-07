@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-height: 572px;
+  height: 572px;
   width: 41wv;
 }
 .productName {
@@ -104,8 +104,15 @@
     flex-direction: column;
     align-items: center;
   }
+  .categoryImage {
+    width: 100%;
+    height: 250px;
+  }
 }
 @media (max-width: 576px) {
+  .categoryImage {
+    height: 200px;
+  }
   .descriptionTitle {
     font-size: 16px;
   }

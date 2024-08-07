@@ -33,11 +33,6 @@
     grid-template-columns: repeat(2, 1fr);
   }
   .categoryImage {
-    height: 40vw;
+    height: 43vw;
   }
 }
-/* @media (max-width: 576px) {
-  .categoryImage {
-    height: 23vw;
-  }
-} */

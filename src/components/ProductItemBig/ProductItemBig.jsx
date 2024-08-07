@@ -58,7 +58,7 @@ export default function ProductItemBig({ product }) {
         </div>
         <div className={style.descriptionBox}>
           <p className={style.descriptionTitle}>Description</p>
-          <p className={`${style.description} ${expanded ? style.expanded : ""}`}>{product.description}</p>
+          <p className={`${style.description} ${expanded ? "" : style.expanded}`}>{product.description}</p>
           <button
             className={style.descriptionBtn}
             onClick={() => {
