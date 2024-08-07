@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/logo.svg";
 import cartIcon from "../../assets/cartIcon.svg";
 import style from "./Header.module.css";
@@ -10,35 +10,50 @@ export default function Header() {
   const { items } = useSelector((state) => state.cart);
   const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
   const dispatch = useDispatch();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
       dispatch(getAllCategories());
   }, [dispatch]);
 
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleMenuItemClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className={style.header}>
       <div className={style.burgerBox}>
         <div className={style.menu}>
-          <input type="checkbox" id="burger-checkbox" className={style.burgerCheckbox} />
+          <input
+            type="checkbox"
+            id="burger-checkbox"
+            className={style.burgerCheckbox}
+            checked={isMenuOpen}
+            onChange={handleMenuToggle}
+          />
           <label htmlFor="burger-checkbox" className={style.burger}></label>
           <ul className={style.menuList}>
             <li>
-              <Link to={"/"} className={style.menuItem}>
+              <Link to={"/"} className={style.menuItem} onClick={handleMenuItemClick}>
                 Main Page
               </Link>
             </li>
             <li>
-              <Link to={"/categories"} className={style.menuItem}>
+              <Link to={"/categories"} className={style.menuItem} onClick={handleMenuItemClick}>
                 Categories
               </Link>
             </li>
             <li>
-              <Link to={"/products"} className={style.menuItem}>
+              <Link to={"/products"} className={style.menuItem} onClick={handleMenuItemClick}>
                 All products
               </Link>
             </li>
             <li>
-              <Link to={"/sales"} className={style.menuItem}>
+              <Link to={"/sales"} className={style.menuItem} onClick={handleMenuItemClick}>
                 All sales
               </Link>
             </li>
