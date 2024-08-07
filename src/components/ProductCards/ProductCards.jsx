@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import style from "./ProductCards.module.css";
 import { useLocation, useSearchParams } from "react-router-dom";
 import axios from "axios";
-import { API_URL } from "../../features/api/apiThunks";
+import { API_URL, getAllCategories } from "../../features/api/apiThunks";
 import ProductItem from "../ProductItem/ProductItem";
 import schuffleProducts from "../../helpers/schuffleProducts";
 import SortLine from "../SortLine/SortLine";
 import filterProducts from "../../helpers/filterProducts";
 import sortProducts from "../../helpers/sortProducts";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ProductCards() {
   const location = useLocation();
@@ -17,8 +17,10 @@ export default function ProductCards() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
   const { items: categories } = useSelector((state) => state.categories);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getAllCategories());
     axios
       .get(`${API_URL}/products/all`)
       .then((responce) => {
@@ -29,7 +31,7 @@ export default function ProductCards() {
         console.error(error);
         setIsLoading(false);
       });
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) {
     return <div>Loading...</div>;

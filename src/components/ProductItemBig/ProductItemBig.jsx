@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "./ProductItemBig.module.css";
 import countDiscount from "../../helpers/countDiscount";
 import ProductCountButtons from "../Buttons/ProductCountButtons/ProductCountButtons";
@@ -11,7 +11,25 @@ export default function ProductItemBig({ product }) {
   const [expanded, setExpanded] = useState(false);
   const [counter, setCounter] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
+  const [isReadMoreVisible, setIsReadMoreVisible] = useState(false);
+  const descriptionRef = useRef(null);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    function checkIfReadMoreVisible() {
+      if (descriptionRef.current) {
+        const lineHeight = parseInt(window.getComputedStyle(descriptionRef.current).lineHeight);
+        const maxLines = 8;
+        const maxHeight = lineHeight * maxLines;
+        setIsReadMoreVisible(descriptionRef.current.scrollHeight > maxHeight);
+      }
+    };
+
+    checkIfReadMoreVisible();
+    window.addEventListener("resize", checkIfReadMoreVisible);
+
+    return () => window.removeEventListener("resize", checkIfReadMoreVisible);
+  }, [product.description]);
 
   function handleClick(e) {
     e.preventDefault();
@@ -58,15 +76,14 @@ export default function ProductItemBig({ product }) {
         </div>
         <div className={style.descriptionBox}>
           <p className={style.descriptionTitle}>Description</p>
-          <p className={`${style.description} ${expanded ? "" : style.expanded}`}>{product.description}</p>
-          <button
-            className={style.descriptionBtn}
-            onClick={() => {
-              setExpanded(!expanded);
-            }}
-          >
-            {expanded ? "Read less" : "Read more"}
-          </button>
+          <p ref={descriptionRef} className={`${style.description} ${expanded ? "" : style.expanded}`}>
+            {product.description}
+          </p>
+          {isReadMoreVisible && (
+            <button className={style.descriptionBtn} onClick={() => setExpanded(!expanded)}>
+              {expanded ? "Read less" : "Read more"}
+            </button>
+          )}
         </div>
       </div>
     </div>

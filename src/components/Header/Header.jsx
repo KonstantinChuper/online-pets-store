@@ -1,20 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import logo from "../../assets/logo.svg";
 import cartIcon from "../../assets/cartIcon.svg";
 import style from "./Header.module.css";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllCategories } from "../../features/api/apiThunks";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const { items } = useSelector((state) => state.cart);
   const totalQuantity = items.reduce((acc, item) => acc + item.quantity, 0);
-  const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-      dispatch(getAllCategories());
-  }, [dispatch]);
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
