@@ -13,7 +13,6 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  height: 572px;
   width: 41wv;
 }
 .productName {
@@ -72,10 +71,11 @@
   line-height: 1.3;
   overflow: hidden;
   text-overflow: ellipsis;
+  height: 100%;
 }
 .expanded {
   display: -webkit-box;
-  -webkit-line-clamp: 10;
+  -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
 }
 .descriptionBtn {
