@@ -5,6 +5,7 @@ import style from "./Categories.module.css";
 import HeaderWithLinks from "../HeaderWithLinks/HeaderWithLinks";
 import { Link, useLocation } from "react-router-dom";
 import { API_URL } from "../../features/api/apiThunks";
+import Loader from "../Loading/Loader";
 
 export default function Categories() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ export default function Categories() {
   }, [dispatch, status]);
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (status === "failed") {

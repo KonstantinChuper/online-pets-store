@@ -9,6 +9,7 @@ import SortLine from "../SortLine/SortLine";
 import filterProducts from "../../helpers/filterProducts";
 import sortProducts from "../../helpers/sortProducts";
 import { useDispatch, useSelector } from "react-redux";
+import Loader from "../Loading/Loader";
 
 export default function ProductCards() {
   const location = useLocation();
@@ -34,7 +35,7 @@ export default function ProductCards() {
   }, [dispatch]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
   if (products.length === 0) {
     return <div>No products found</div>;

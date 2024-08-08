@@ -8,6 +8,7 @@ import ProductItemBig from "../components/ProductItemBig/ProductItemBig";
 import { API_URL } from "../features/api/apiThunks";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../features/api/apiThunks";
+import Loading from "../components/Loading/LinearLoading";
 
 export default function ProductPage() {
   const location = useLocation();
@@ -34,7 +35,7 @@ export default function ProductPage() {
   }, [dispatch, status, productId]);
 
   if (isLoading || status === "loading") {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   if (products.length === 0) {
     return <div>No products found</div>;

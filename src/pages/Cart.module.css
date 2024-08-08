@@ -9,10 +9,6 @@
   display: flex;
   gap: 2rem;
 }
-/* .productCardsBox {
-  height: 582px;
-  overflow: scroll;
-} */
 @media (max-width: 1045px) {
   .cartBox {
     flex-direction: column;

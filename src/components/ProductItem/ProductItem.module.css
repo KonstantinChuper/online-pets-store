@@ -3,7 +3,7 @@
   border-radius: 8px 8px 0 0;
   width: 100%;
   border: 1px solid #dddddd;
-  object-fit: contain;
+  object-fit:fill;
 }
 .card {
   display: flex;
@@ -99,6 +99,16 @@
   background-color: #ffffff;
   border: 1px solid #282828;
 }
+@media (max-width: 1054px) {
+  .productBtn {
+    display: inline-block;
+    bottom: 7px;
+    padding: 12px;
+  }
+  .priceBox {
+    height: 150px;
+  }
+}
 @media (max-width: 576px) {
   .productBtn {
     padding: 10px;
@@ -106,7 +116,7 @@
     position: absolute;
     bottom: 7px;
     left: 16px;
-    display: block;
+    display: inline-block;
   }
   .categoryImage {
     height: 31vw;
