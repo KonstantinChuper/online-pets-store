@@ -14,7 +14,7 @@
   text-align: center;
 }
 .image {
-  width: 41vw;
+  width: 45vw;
 }
 .formBox {
   display: flex;
@@ -90,11 +90,11 @@ input:active {
 }
 @media (max-width: 768px) {
   .image {
-  width: 61vw;
-}
+    width: 61vw;
+  }
 }
 @media (max-width: 576px) {
   .image {
-  width: 71vw;
-}
+    width: 71vw;
+  }
 }
