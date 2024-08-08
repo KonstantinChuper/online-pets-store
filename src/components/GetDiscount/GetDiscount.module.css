@@ -1,6 +1,6 @@
 .getDiscount {
   margin-top: 6.625rem;
-  padding: 32px;
+  padding: 32px 32px 0 32px;
   background: linear-gradient(245deg, #2451c6 32.63%, #0d50ff 98.96%);
   border-radius: 12px;
   position: relative;
@@ -13,26 +13,25 @@
   line-height: 1.1;
   text-align: center;
 }
-.imageBox {
-  position: absolute;
-  bottom: 0;
-  z-index: 0;
-  width: 51vw;
-}
 .image {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  width: 41vw;
+}
+.formBox {
+  display: flex;
+  align-items: flex-end;
 }
 .form {
+  flex-shrink: 0;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: end;
   gap: 16px;
   padding-top: 56px;
+  padding-bottom: 32px;
 }
 .form input {
-  width: 40%;
+  width: 100%;
   background-color: transparent;
   border: 1px solid #ffffff;
   padding: 16px 32px;
@@ -53,7 +52,7 @@ input:active {
 }
 .error {
   align-self: start;
-  padding-left: 61%;
+  padding-left: 1%;
   color: #ff9292;
 }
 .form .errorInput {
@@ -63,14 +62,15 @@ input:active {
 .form .errorInput:active {
   box-shadow: none;
 }
-@media (min-width: 1454px) {
-  .imageBox {
-    width: 750px;
+@media (max-width: 1454px) {
+  .image {
+    width: 51vw;
   }
 }
 @media (max-width: 1054px) {
-  .getDiscount {
-    height: 870px;
+  .formBox {
+    flex-direction: column-reverse;
+    align-items: center;
   }
   .form {
     max-width: 100%;
@@ -80,36 +80,21 @@ input:active {
     justify-content: center;
     align-items: center;
     gap: 16px;
-    padding-top: 56px;
-  }
-  .form input {
-    width: 80%;
+    padding: 56px 0 0 0;
   }
   .error {
     align-self: start;
-    padding-left: 16%;
+    padding-left: 1%;
     color: #ff9292;
-  }
-  .imageBox {
-    position: static;
-  }
-  .image {
-    left: 0;
   }
 }
 @media (max-width: 768px) {
-  .getDiscount {
-    height: 750px;
-  }
-  .form input {
-    width: 100%;
-  }
-  .error {
-    padding-left: 6%;
-  }
+  .image {
+  width: 61vw;
 }
-@media (max-width: 567px) {
-  .getDiscount {
-    height: 650px;
-  }
+}
+@media (max-width: 576px) {
+  .image {
+  width: 71vw;
+}
 }

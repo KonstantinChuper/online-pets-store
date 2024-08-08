@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/system";
 
-const CustomButton = styled(Button)(({theme}) => ({
+const CustomButton = styled(Button)(({ theme }) => ({
   backgroundColor: "#FFFFFF",
   color: "#282828",
   padding: "10px 20px",
@@ -12,7 +12,7 @@ const CustomButton = styled(Button)(({theme}) => ({
   textTransform: "none",
   transition: "all 0.5s",
   marginTop: "16px",
-  width: "40%",
+  width: "100%",
   "&:hover": {
     backgroundColor: "#282828",
     color: "#ffffff",
@@ -20,18 +20,11 @@ const CustomButton = styled(Button)(({theme}) => ({
   "&.Mui-disabled": {
     backgroundColor: "#F1F3F4",
     color: "#0D50FF",
-  },
-  [theme.breakpoints.down("sm")]: {
-    width: "100%",
-  },
+  }
 }));
 
 const ButtonBanner = ({ children, ...props }) => {
-  return (
-    <CustomButton {...props}>
-      {children}
-    </CustomButton>
-  );
+  return <CustomButton {...props}>{children}</CustomButton>;
 };
 
 export default ButtonBanner;
